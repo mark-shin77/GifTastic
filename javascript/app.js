@@ -49,11 +49,29 @@ $(document).ready(function(){
         var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=10"
 
-        console.log(queryURL);
         // console.log(queryURL);
         $.ajax ({ URL: queryURL, method: "GET"})
          .done (function (response){
             console.log(response);
+            $("#gifs").empty();
+            var results = response.data;
+            if (results == ""){
+                alert("There isn't a gif for the selected button")
+            }
+            for (var x = 0; x < results.length; x ++){
+                var gifDiv = $('<div>');
+                gifDiv.addClass("gifsDiv");
+                var gifRating = $('<p>').text("Rating: results[x].rating");
+                var gifImage = $('<img>');
+                gifDiv.append(gifRating);
+                gifImage.attr('src', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-still', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-animate', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-state', "still");
+                gifImage.addClass("image");
+                gifDiv.append(gifImage);
+                $("#gifs").prepend(gifDiv);
+            }
          })
     }
 
