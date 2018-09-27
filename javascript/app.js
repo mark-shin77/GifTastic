@@ -58,7 +58,7 @@ $(document).ready(function(){
             if (results == ""){
                 alert("There isn't a gif for the selected button")
             }
-            for (var x = 0; x < results.length; x ++){
+            for (var x = 0; x < 10; x ++){
                 var gifDiv = $('<div>');
                 gifDiv.addClass("gifsDiv");
                 var gifRating = $('<p>').text("Rating: results[x].rating");
