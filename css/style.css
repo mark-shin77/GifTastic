@@ -1,0 +1,27 @@
+body{
+    background: url(../images/background2.jpg);
+    background-size: cover;
+}
+.jumbotron{
+    background: rgba(204, 204, 204, 0.5);
+}
+
+.title{
+    margin-top: 1%;
+    text-align: center;
+    padding: 5px;
+    color: white;
+}
+h1{
+    font-weight: bold;
+}
+
+.footer{
+    padding: 2px;
+    text-align: center;
+}
+
+.btn-danger{
+    margin-left: 1%;
+    margin-bottom: 1%;
+}

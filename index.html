@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/style.css"
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- My Javascript -->
+    <script src="javascript/app.js"></script>
+
+    <title>Anime!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron title">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h1>Search for GIFs of your favorite Anime!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Click on the preset buttons to search for my favorite animes!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>If you don't like my list, Make your own using the submit button!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 searchBar">
+                <div class="card">
+                    <div class="card-header">Search for you favorite Anime!</div>
+                    <div class="card-body">
+                            <input type="text" class="form-control" id="searchTerm">
+                            <br>
+                            <button type="button" class="btn btn-danger" id="find" data-name="Search">Search</button>
+                            <button type="button" class="btn btn-danger" id="delete" data-name="Clear">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="jumbotron mainContent">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="myAnimes"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div id="gifs"></div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron footer">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Copywrite</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
