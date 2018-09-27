@@ -27,21 +27,38 @@ $(document).ready(function(){
             }
             animes.push(anime);
             buttons();
-            return false;
         });
     }
 
     // Removing Most Recent Button
     function removeButton() {
         $("#delete").on('click', function(){
-            var anime = animes.length;
-            animes.pop(anime);
-            buttons();
-            return false;
+            if (anime == 8) {
+                return null;
+            } else {
+                var anime = animes.length;
+                animes.pop(anime);
+                buttons();
+            }
         })
+    }
+
+    // Getting Gifs from API
+    function getGIFS() {
+        var anime = $(this).attr("data-name");
+        var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=10"
+
+        console.log(queryURL);
+        // console.log(queryURL);
+        $.ajax ({ URL: queryURL, method: "GET"})
+         .done (function (response){
+            console.log(response);
+         })
     }
 
     buttons();
     newButtons();
     removeButton();
+    getGIFS();
 });
