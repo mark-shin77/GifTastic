@@ -33,7 +33,7 @@ $(document).ready(function(){
     // Removing Most Recent Button
     function removeButton() {
         $("#delete").on('click', function(){
-            if (anime == 8) {
+            if (animes.length == 8) {
                 return null;
             } else {
                 var anime = animes.length;
@@ -48,33 +48,37 @@ $(document).ready(function(){
         var anime = $(this).attr("data-name");
         var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=10"
+        console.log(queryURL);
 
-        // console.log(queryURL);
-        $.ajax ({ URL: queryURL, method: "GET"})
-         .done (function (response){
+        $.ajax ({ 
+            URL: queryURL, 
+            method: "GET",
+            cors: true,
+        })
+         .then(function (response){
             console.log(response);
             $("#gifs").empty();
             var results = response.data;
             if (results == ""){
                 alert("There isn't a gif for the selected button")
             }
-            // for (var x = 0; x < results.length; x ++){
-            //     var gifDiv = $('<div>');
-            //     gifDiv.addClass("gifsDiv");
-            //     var gifRating = $('<p>').text("Rating: results[x].rating");
-            //     var gifImage = $('<img>');
-            //     gifDiv.append(gifRating);
-            //     gifImage.attr('src', results[x].images.fixed_height_small_still.url);
-            //     gifImage.attr('data-still', results[x].images.fixed_height_small_still.url);
-            //     gifImage.attr('data-animate', results[x].images.fixed_height_small_still.url);
-            //     gifImage.attr('data-state', "still");
-            //     gifImage.addClass("image");
-            //     gifDiv.append(gifImage);
-            //     $("#gifs").prepend(gifDiv);
-            // }
+            for (var x = 0; x < results.length; x ++){
+                var gifDiv = $('<div>');
+                gifDiv.addClass("gifsDiv");
+                var gifRating = $('<p>').text("Rating: results[x].rating");
+                var gifImage = $('<img>');
+                gifDiv.append(gifRating);
+                gifImage.attr('src', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-still', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-animate', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-state', "still");
+                gifImage.addClass("image");
+                gifDiv.append(gifImage);
+                $("#gifs").prepend(gifDiv);
+            }
          })
     }
-
+    
     buttons();
     newButtons();
     removeButton();
