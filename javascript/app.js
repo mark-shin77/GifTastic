@@ -44,28 +44,29 @@ $(document).ready(function(){
     }
 
     // Getting Gifs from API
-    function getGIFS() {
+    $(document).on('click', '.anime', function() {
+        console.log("hi");
         var anime = $(this).attr("data-name");
         var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=10"
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=12"
         console.log(queryURL);
 
         $.ajax ({ 
-            URL: queryURL, 
+            url: queryURL, 
             method: "GET",
             cors: true,
         })
          .then(function (response){
             console.log(response);
-            $("#gifs").empty();
+            $(".gifs").empty();
             var results = response.data;
             if (results == ""){
                 alert("There isn't a gif for the selected button")
             }
             for (var x = 0; x < results.length; x ++){
                 var gifDiv = $('<div>');
-                gifDiv.addClass("gifsDiv");
-                var gifRating = $('<p>').text("Rating: results[x].rating");
+                gifDiv.addClass("gifsDiv").addClass('col-lg-3 col-md-4 col-sm-6');
+                var gifRating = $('<p>').text("Rating: " + results[x].rating);
                 var gifImage = $('<img>');
                 gifDiv.append(gifRating);
                 gifImage.attr('src', results[x].images.fixed_height_small_still.url);
@@ -74,13 +75,27 @@ $(document).ready(function(){
                 gifImage.attr('data-state', "still");
                 gifImage.addClass("image");
                 gifDiv.append(gifImage);
-                $("#gifs").prepend(gifDiv);
+                $(".gifs").prepend(gifDiv);
             }
          })
-    }
+    })
+
+    $(document.body).on('click', '.image', function(){
+        console.log(this);
+        var state = $(this).attr('data-state');
+         if(state === "still"){
+            $(this).attr('src', $(this).attr('data-animate'));
+            $(this).attr('data-state', 'animate');
+            console.log('animate');
+        } else {
+            $(this).attr('src', $(this).attr('data-still'));
+            $(this).attr('data-state', 'still');
+            console.log('still')
+        }
+
+    });
     
     buttons();
     newButtons();
     removeButton();
-    getGIFS();
 });
