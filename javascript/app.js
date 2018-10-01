@@ -45,11 +45,11 @@ $(document).ready(function(){
 
     // Getting Gifs from API
     $(document).on('click', '.anime', function() {
-        console.log("hi");
+        // console.log("hi");
         var anime = $(this).attr("data-name");
         var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=12"
-        console.log(queryURL);
+        // console.log(queryURL);
 
         $.ajax ({ 
             url: queryURL, 
@@ -71,7 +71,7 @@ $(document).ready(function(){
                 gifDiv.append(gifRating);
                 gifImage.attr('src', results[x].images.fixed_height_small_still.url);
                 gifImage.attr('data-still', results[x].images.fixed_height_small_still.url);
-                gifImage.attr('data-animate', results[x].images.fixed_height_small_still.url);
+                gifImage.attr('data-animate', results[x].images.fixed_height_small.url);
                 gifImage.attr('data-state', "still");
                 gifImage.addClass("image");
                 gifDiv.append(gifImage);
@@ -81,7 +81,7 @@ $(document).ready(function(){
     })
     $(document.body).on('click', '.image', function(){
         console.log(this);
-        var state = $(this).attr('data-state');
+        var state = $(this).attr("data-state");
          if(state === "still"){
             $(this).attr('src', $(this).attr('data-animate'));
             $(this).attr('data-state', 'animate');
