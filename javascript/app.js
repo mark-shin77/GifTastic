@@ -49,7 +49,7 @@ $(document).ready(function(){
         var anime = $(this).attr("data-name");
         var apiKey = "45zTb4XSxB3hlYFp11XmZI7vp9rUmXJI";
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + anime + "&api_key=" + apiKey + "&limit=12"
-        // console.log(queryURL);
+        console.log(queryURL);
 
         $.ajax ({ 
             url: queryURL, 
@@ -80,16 +80,16 @@ $(document).ready(function(){
          })
     })
     $(document.body).on('click', '.image', function(){
-        console.log(this);
+        // console.log(this);
         var state = $(this).attr("data-state");
          if(state === "still"){
             $(this).attr('src', $(this).attr('data-animate'));
             $(this).attr('data-state', 'animate');
-            console.log('animate');
+            // console.log('animate');
         } else {
             $(this).attr('src', $(this).attr('data-still'));
             $(this).attr('data-state', 'still');
-            console.log('still')
+            // console.log('still')
         }
 
     });

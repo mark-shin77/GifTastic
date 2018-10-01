@@ -2,6 +2,7 @@ body{
     background: url(../images/background2.jpg);
     background-size: cover;
 }
+
 .jumbotron{
     background: rgba(204, 204, 204, 0.5);
 }
@@ -12,6 +13,7 @@ body{
     padding: 5px;
     color: white;
 }
+
 h1{
     font-weight: bold;
 }
