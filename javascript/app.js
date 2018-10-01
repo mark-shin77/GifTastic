@@ -79,7 +79,6 @@ $(document).ready(function(){
             }
          })
     })
-
     $(document.body).on('click', '.image', function(){
         console.log(this);
         var state = $(this).attr('data-state');
@@ -94,6 +93,7 @@ $(document).ready(function(){
         }
 
     });
+
     
     buttons();
     newButtons();
